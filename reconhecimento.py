@@ -8,22 +8,25 @@ from sklearn.decomposition import PCA
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 
-# Caminhos dos arquivos de treino e teste
-dataset_path = "Caminho"
-train_path = os.path.join(dataset_path, 'train')
-test_path = os.path.join(dataset_path, 'test')
+# URLs dos arquivos raw no GitHub
+url_X_train = "https://raw.githubusercontent.com/brendatrindade/Reconhecimento-de-atividade-humana/main/datasheet/UCI%20HAR/UCI%20HAR%20Dataset/train/X_train.txt"
+url_X_test = "https://raw.githubusercontent.com/brendatrindade/Reconhecimento-de-atividade-humana/main/datasheet/UCI%20HAR/UCI%20HAR%20Dataset/test/X_test.txt"
+url_y_train = "https://raw.githubusercontent.com/brendatrindade/Reconhecimento-de-atividade-humana/main/datasheet/UCI%20HAR/UCI%20HAR%20Dataset/train/y_train.txt"
+url_y_test = "https://raw.githubusercontent.com/brendatrindade/Reconhecimento-de-atividade-humana/main/datasheet/UCI%20HAR/UCI%20HAR%20Dataset/test/y_test.txt"
+url_subject_train = "https://raw.githubusercontent.com/brendatrindade/Reconhecimento-de-atividade-humana/main/datasheet/UCI%20HAR/UCI%20HAR%20Dataset/train/subject_train.txt"
+url_subject_test = "https://raw.githubusercontent.com/brendatrindade/Reconhecimento-de-atividade-humana/main/datasheet/UCI%20HAR/UCI%20HAR%20Dataset/test/subject_test.txt"
 
-# Carregar conjuntos de dados de treino e teste
-X_train = pd.read_csv(os.path.join(train_path, 'X_train.txt'), delim_whitespace=True, header=None)
-X_test = pd.read_csv(os.path.join(test_path, 'X_test.txt'), delim_whitespace=True, header=None)
+# Carregar os dados diretamente do GitHub
+X_train = pd.read_csv(url_X_train, sep='\s+', header=None)
+X_test = pd.read_csv(url_X_test, sep='\s+', header=None)
 
-y_train = pd.read_csv(os.path.join(train_path, 'y_train.txt'), delim_whitespace=True, header=None)
-y_test = pd.read_csv(os.path.join(test_path, 'y_test.txt'), delim_whitespace=True, header=None)
+y_train = pd.read_csv(url_y_train, sep='\s+', header=None)
+y_test = pd.read_csv(url_y_test, sep='\s+', header=None)
 
-subject_train = pd.read_csv(os.path.join(train_path, 'subject_train.txt'), delim_whitespace=True, header=None)
-subject_test = pd.read_csv(os.path.join(test_path, 'subject_test.txt'), delim_whitespace=True, header=None)
+subject_train = pd.read_csv(url_subject_train, sep='\s+', header=None)
+subject_test = pd.read_csv(url_subject_test, sep='\s+', header=None)
 
-# Combinar conjuntos de treino e teste
+# Combinar os dados de treino e teste
 X_data = pd.concat([X_train, X_test], axis=0).reset_index(drop=True)
 y_data = pd.concat([y_train, y_test], axis=0).reset_index(drop=True)
 subjects = pd.concat([subject_train, subject_test], axis=0).reset_index(drop=True)
@@ -46,7 +49,7 @@ X_pca = pca.fit_transform(X_scaled)
 pca_df = pd.DataFrame(X_pca, columns=['PC1', 'PC2'])
 pca_df['Activity'] = y_data[0].values
 
-# Visualizar as duas principais componentes por atividade
+# Visualizar as duas principais componentes por atividade, a projeção PCA
 plt.figure(figsize=(10, 8))
 sns.scatterplot(data=pca_df, x='PC1', y='PC2', hue='Activity', palette='Set1', legend='full', alpha=0.7)
 plt.title('Projeção PCA das Atividades')
@@ -104,5 +107,5 @@ plt.legend(title='Cluster')
 plt.show()
 
 # Avaliar o desempenho dos clusters com silhouette score
-silhouette_avg = silhouette_score(X_pca, kmeans.labels_)
+silhouette_avg= silhouette_score(X_pca, kmeans.labels_)
 print(f"Silhouette Score para K=6: {silhouette_avg}")
