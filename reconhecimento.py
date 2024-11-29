@@ -109,3 +109,31 @@ plt.show()
 # Avaliar o desempenho dos clusters com silhouette score
 silhouette_avg= silhouette_score(X_pca, kmeans.labels_)
 print(f"Silhouette Score para K=6: {silhouette_avg}")
+
+from sklearn.metrics import silhouette_score
+
+# Calcular Inércia
+inertia = kmeans.inertia_
+
+# Calcular Silhouette Score
+silhouette_avg = silhouette_score(X_pca, kmeans.labels_)
+
+# Exibir as métricas
+print(f"Inércia: {inertia}")
+print(f"Silhouette Score: {silhouette_avg}")
+
+# Verificar a distribuição de atividades por cluster
+cluster_activity_distribution = pd.crosstab(pca_df['Cluster'], pca_df['Activity'])
+print(cluster_activity_distribution)
+
+# Plotar os centroides dos clusters
+centroids = kmeans.cluster_centers_
+
+plt.figure(figsize=(10, 8))
+sns.scatterplot(data=pca_df, x='PC1', y='PC2', hue='Cluster', palette='tab10', legend='full', alpha=0.7)
+plt.scatter(centroids[:, 0], centroids[:, 1], s=300, c='red', marker='X', label='Centroides', alpha=1)
+plt.title('Centroides dos Clusters Gerados pelo K-means (K=6)')
+plt.xlabel('Componente Principal 1')
+plt.ylabel('Componente Principal 2')
+plt.legend(title='Cluster')
+plt.show()
