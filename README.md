@@ -11,7 +11,7 @@ O objetivo deste projeto foi implementar e avaliar o algoritmo K-means para o ag
 - Avaliação e Visualização dos Resultados: Avaliação da qualidade dos clusters formados e visualização dos mesmos usando PCA.
 
 ## Instruções para Executar o Código
-Pré-requisitos:   
+- Pré-requisito:   
 Certifique-se de ter o Python instalado, é necessário instalar as bibliotecas listadas abaixo, que podem ser instaladas via pip:    
 ```pip install numpy pandas matplotlib seaborn scikit-learn```
 
