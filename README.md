@@ -5,29 +5,27 @@ O objetivo deste projeto foi implementar e avaliar o algoritmo K-means para o ag
 
 ### O projeto se concentrou nas seguintes etapas:
 
-Análise Exploratória dos Dados: Análise das distribuições, correlações e redução de dimensionalidade usando PCA.
-Implementação do K-means: Aplicação do algoritmo K-means para agrupar as atividades com base nos dados dos sensores.
-Escolha do Número de Clusters (K): Utilização do método do cotovelo e do silhouette score para determinar o número ideal de clusters.
-Avaliação e Visualização dos Resultados: Avaliação da qualidade dos clusters formados e visualização dos mesmos usando PCA.
+- Análise Exploratória dos Dados: Análise das distribuições, correlações e redução de dimensionalidade usando PCA.
+- Implementação do K-means: Aplicação do algoritmo K-means para agrupar as atividades com base nos dados dos sensores.
+- Escolha do Número de Clusters (K): Utilização do método do cotovelo e do silhouette score para determinar o número ideal de clusters.
+- Avaliação e Visualização dos Resultados: Avaliação da qualidade dos clusters formados e visualização dos mesmos usando PCA.
 
 ## Instruções para Executar o Código
-Pré-requisitos
-Certifique-se de ter o Python instalado (recomenda-se a versão 3.6 ou superior). Além disso, é necessário instalar as bibliotecas listadas abaixo, que podem ser instaladas via pip:
-
+Pré-requisitos:   
+Certifique-se de ter o Python instalado, é necessário instalar as bibliotecas listadas abaixo, que podem ser instaladas via pip:    
 ```pip install numpy pandas matplotlib seaborn scikit-learn```
 
 ## Passos para Execução
-Baixe o Dataset: 
-O dataset utilizado está disponível no repositório do GitHub. Você pode acessar diretamente a URL raw dos arquivos ou clonar o repositório com o seguinte comando:
-```git clone https://github.com/brendatrindade/Reconhecimento-de-atividade-humana.git```
 
-Executando o Código: 
+O dataset utilizado está disponível no repositório do GitHub. É possível acessar diretamente a URL raw dos arquivos ou clonar o repositório com o seguinte comando:    
+```git clone https://github.com/brendatrindade/Reconhecimento-de-atividade-humana.git```    
+    
 Após clonar o repositório, acesse a pasta onde o código está localizado. Em seguida, execute o código Python ```reconhecimento.py``` para carregar e processar os dados, aplicar o K-means e gerar as visualizações.
-
+        
 O código irá gerar os gráficos de visualização dos clusters, além de calcular as métricas de avaliação como o silhouette score e inércia.
 
 ## Resultados: 
-O script gerará:
+O script gerará:   
 
 - Gráficos de clusters em 2D
 - As métricas de avaliação de qualidade do modelo, como o silhouette score e a inércia.
@@ -40,6 +38,6 @@ O script gerará:
 
 ### Considerações sobre os Resultados
 
-Apesar da boa separação observada entre a maioria dos clusters, houve alguma sobreposição entre as atividades "sentar" e "ficar em pé", indicando que essas atividades têm características similares, dificultando a separação clara.
-O modelo K-means é sensível à inicialização dos centroides e à presença de outliers, o que pode afetar o desempenho. No entanto, a escolha de K-means++ ajudou a melhorar a inicialização dos centroides, garantindo melhor convergência.
+Apesar da boa separação observada entre a maioria dos clusters, houve alguma sobreposição entre as atividades "sentar" e "ficar em pé", indicando que essas atividades têm características similares, dificultando a separação clara.    
+O modelo K-means é sensível à inicialização dos centroides e à presença de outliers, o que pode afetar o desempenho. No entanto, a escolha de K-means++ ajudou a melhorar a inicialização dos centroides, garantindo melhor convergência.    
 A redução de dimensionalidade através do PCA foi útil para a visualização, mas também pode ter levado à perda de informações relevantes. Em projetos futuros, poderia ser interessante explorar técnicas de redução de dimensionalidade alternativas ou usar modelos supervisionados.
