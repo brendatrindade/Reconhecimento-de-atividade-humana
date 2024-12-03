@@ -5,9 +5,9 @@ O objetivo deste projeto foi implementar e avaliar o algoritmo K-means para o ag
 
 ### O projeto se concentrou nas seguintes etapas:
 
-- Análise Exploratória dos Dados: Análise das distribuições, correlações e redução de dimensionalidade usando PCA.
-- Implementação do K-means: Aplicação do algoritmo K-means para agrupar as atividades com base nos dados dos sensores.
-- Escolha do Número de Clusters (K): Utilização do método do cotovelo e do silhouette score para determinar o número ideal de clusters.
+- Análise Exploratória dos Dados: Análise das distribuições, correlações e redução de dimensionalidade usando PCA;
+- Implementação do K-means: Aplicação do algoritmo K-means para agrupar as atividades com base nos dados dos sensores;
+- Escolha do Número de Clusters (K): Utilização do método do cotovelo e do silhouette score para determinar o número ideal de clusters;
 - Avaliação e Visualização dos Resultados: Avaliação da qualidade dos clusters formados e visualização dos mesmos usando PCA.
 
 ## Instruções para Executar o Código
